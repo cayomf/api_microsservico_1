@@ -2,15 +2,24 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/hyperyuri/webapi-with-go/database"
 	"github.com/hyperyuri/webapi-with-go/models"
+	"github.com/hyperyuri/webapi-with-go/services"
 )
 
-func ApplyForVacancy(c *gin.Context) {
-	db := database.GetDatabase()
+type ApplicationController interface {
+	ApplyForVacancy(c *gin.Context)
+}
 
+type applicationControllerImpl struct {
+	applicationService services.ApplicationService
+}
+
+func NewApplicationController(applicationService services.ApplicationService) ApplicationController {
+	return &applicationControllerImpl{applicationService: applicationService}
+}
+
+func (a *applicationControllerImpl) ApplyForVacancy(c *gin.Context) {
 	var application models.Application
-
 	err := c.ShouldBindJSON(&application)
 	if err != nil {
 		c.JSON(400, gin.H{
@@ -19,7 +28,7 @@ func ApplyForVacancy(c *gin.Context) {
 		return
 	}
 
-	err = db.Create(&application).Error
+	err = a.applicationService.ApplyForVacancy(&application)
 	if err != nil {
 		c.JSON(400, gin.H{
 			"error": "cannot apply for vacancy: " + err.Error(),

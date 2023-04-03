@@ -7,7 +7,7 @@ import (
 	"github.com/hyperyuri/webapi-with-go/services"
 )
 
-func Login(c *gin.Context) {
+func Logins(c *gin.Context) {
 	db := database.GetDatabase()
 
 	var p models.Login

@@ -18,6 +18,12 @@ services:
       PGDATA: /var/lib/postgresql/data/webapi-mvc
     volumes:
       - webapi-mvc:/var/lib/postgresql/data
+  prometheus:
+    image: prom/prometheus:v2.40.4
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
 volumes:
   webapi-mvc:
