@@ -2,5 +2,5 @@ projectKey=api_microsservicos_1
 serverUrl=http://localhost:9000
 serverVersion=9.9.0.65466
 dashboardUrl=http://localhost:9000/dashboard?id=api_microsservicos_1
-ceTaskId=AYdF1RjjTW1GWZPy7usk
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYdF1RjjTW1GWZPy7usk
+ceTaskId=AYdF2wIaTW1GWZPy7usl
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYdF2wIaTW1GWZPy7usl
